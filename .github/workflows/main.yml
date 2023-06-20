@@ -22,19 +22,6 @@ jobs:
     - name: Display Flutter version
       run: flutter --version
 
-    - name: Set up Dart SDK
-      run: |
-        flutter config --no-analytics
-        flutter doctor --android-licenses
-        flutter upgrade
-        flutter pub global activate dart-sdk
-
-    - name: Set up environment variables
-      run: echo "PATH=\$PATH:`flutter pub global path`" >> $GITHUB_ENV
-
-    - name: Dart pub get
-      run: dart pub get
-
     - name: Flutter pub get
       run: flutter pub get
 
