@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
@@ -23,17 +23,17 @@ jobs:
       run: flutter --version
 
     - name: Uninstall previous Dart SDK
-      run: rm -rf /c/dart-sdk
+      run: rmdir /S /Q "C:\Program Files\dart-sdk" || echo "No previous Dart SDK found"
 
     - name: Install Dart SDK 3.0.5
       run: |
-        mkdir -p /c/dart-sdk
+        mkdir "C:\Program Files\dart-sdk"
         curl -sSLO https://storage.googleapis.com/dart-archive/channels/stable/release/3.0.5/sdk/dartsdk-windows-x64-release.zip
-        7z x -aoa dartsdk-windows-x64-release.zip -o/c/dart-sdk
+        7z x -aoa dartsdk-windows-x64-release.zip -o"C:\Program Files\dart-sdk"
         del dartsdk-windows-x64-release.zip
 
     - name: Set up environment variables
-      run: echo "PATH=/c/dart-sdk/bin;%PATH%" >> $GITHUB_ENV
+      run: echo "PATH=C:\Program Files\dart-sdk\bin;%PATH%" >> $GITHUB_ENV
 
     - name: Flutter pub get
       run: flutter pub get
