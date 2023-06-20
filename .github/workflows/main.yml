@@ -22,9 +22,6 @@ jobs:
     - name: Display Flutter version
       run: flutter --version
 
-    - name: Uninstall previous Dart SDK
-      run: rmdir /S /Q "C:\Program Files\dart-sdk" || echo "No previous Dart SDK found"
-
     - name: Install Dart SDK 3.0.5
       run: |
         mkdir "C:\Program Files\dart-sdk"
