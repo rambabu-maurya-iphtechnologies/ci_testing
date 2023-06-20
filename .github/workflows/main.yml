@@ -32,6 +32,9 @@ jobs:
     - name: Set up environment variables
       run: echo "PATH=C:\Program Files\dart-sdk\bin;%PATH%" >> $GITHUB_ENV
 
+    - name: flutter upgrade
+      run: flutter upgrade
+
     - name: Flutter pub get
       run: flutter pub get
 
