@@ -41,6 +41,10 @@ jobs:
     - name: Run tests
       run: flutter test
 
-    - name: Display build file location
+    - name: Build APK
+      run: flutter build apk --debug
+
+    - name: Display build folder location
       run: |
-        echo "Build file location: $(flutter build apk --debug | grep -o 'Building .*\.apk' | sed 's/Building //')"
+        echo "Build folder location: $(pwd)/build/"
+
