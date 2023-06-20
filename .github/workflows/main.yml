@@ -32,7 +32,7 @@ jobs:
     - name: Set up environment variables
       run: echo "PATH=C:\Program Files\dart-sdk\bin;%PATH%" >> $GITHUB_ENV
 
-    - name: flutter upgrade
+    - name: Flutter upgrade
       run: flutter upgrade
 
     - name: Flutter pub get
@@ -40,3 +40,7 @@ jobs:
 
     - name: Run tests
       run: flutter test
+
+    - name: Display build file location
+      run: |
+        echo "Build file location: $(flutter build apk --debug | grep -o 'Building .*\.apk' | sed 's/Building //')"
