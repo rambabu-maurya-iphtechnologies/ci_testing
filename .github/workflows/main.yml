@@ -27,13 +27,14 @@ jobs:
 
     - name: Install Dart SDK 3.0.5
       run: |
+        mkdir -p /usr/lib/dart
         wget https://storage.googleapis.com/dart-archive/channels/stable/release/3.0.5/sdk/dartsdk-linux-x64-release.zip
-        unzip -q dartsdk-linux-x64-release.zip -d /usr/lib
+        unzip -q dartsdk-linux-x64-release.zip -d /usr/lib/dart
         rm dartsdk-linux-x64-release.zip
 
     - name: Set up environment variables
-      run: echo "PATH=/usr/lib/dart/bin:\$PATH" >> $GITHUB_ENV
-
+      run: echo "PATH=C:/Program Filesdart/sdk/bin:/$PATH" >> $GITHUB_ENVs
+      C:\Program Files
     - name: Flutter pub get
       run: flutter pub get
 
