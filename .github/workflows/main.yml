@@ -12,12 +12,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '2.x.x' # Replace with the desired Flutter version
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '2.x'
+          channel: 'any'
+- run: flutter --version
 
     - name: Flutter pub get
       run: |
