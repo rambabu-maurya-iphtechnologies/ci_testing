@@ -17,10 +17,20 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '2.x'
-        channel: 'any'
+        channel: 'stable'
 
     - name: Display Flutter version
       run: flutter --version
+
+    - name: Set up Dart SDK
+      run: |
+        echo "Dart SDK version required: >=3.0.5 <4.0.0"
+        curl -sSLO https://storage.googleapis.com/dart-archive/channels/stable/release/2.17.0-266.8.beta/sdk/dartsdk-linux-x64-release.zip
+        unzip dartsdk-linux-x64-release.zip -d $HOME
+        echo "export PATH=\"$HOME/dart-sdk/bin:\$PATH\"" >> $GITHUB_ENV
+
+    - name: Dart pub get
+      run: dart pub get
 
     - name: Flutter pub get
       run: flutter pub get
