@@ -27,7 +27,7 @@ jobs:
         echo "Dart SDK version required: 3.0.5"
         curl -sSLO https://dart.dev/tools/sdk/archive/dart-sdk-3.0.5-win-x64.zip
         7z x -aoa dart-sdk-3.0.5-win-x64.zip -o%USERPROFILE%
-        echo "::add-path::%USERPROFILE%\\dart-sdk\\bin"
+        echo "PATH=%USERPROFILE%\\dart-sdk\\bin;%PATH%" >> $GITHUB_ENV
 
     - name: Flutter pub get
       run: flutter pub get
