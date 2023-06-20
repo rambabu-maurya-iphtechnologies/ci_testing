@@ -1,1 +1,30 @@
 
+name: Flutter CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '2.x.x' # Replace with the desired Flutter version
+
+    - name: Flutter pub get
+      run: |
+        cd C:/Users/HP/ci_testing
+        flutter pub get
+
+    - name: Run tests
+      run: |
+        cd C:/Users/HP/ci_testing
+        flutter test
