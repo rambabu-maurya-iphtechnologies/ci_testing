@@ -37,6 +37,7 @@ jobs:
       C:\Program Files
     - name: Flutter pub get
       run: flutter pub get
+      
 
     - name: Run tests
       run: flutter test
