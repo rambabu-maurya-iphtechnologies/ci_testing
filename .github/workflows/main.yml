@@ -25,12 +25,13 @@ jobs:
     - name: Set up Dart SDK
       run: |
         echo "Dart SDK version required: 3.0.5"
-        curl -sSLO https://dart.dev/tools/sdk/archive/dart-sdk-3.0.5-win-x64.zip
-        7z x -aoa dart-sdk-3.0.5-win-x64.zip -o%USERPROFILE%
+        curl -sSLO https://storage.googleapis.com/dart-archive/channels/stable/release/3.0.5/sdk/dartsdk-windows-x64-release.zip
+        7z x -aoa dartsdk-windows-x64-release.zip -o%USERPROFILE%
         echo "PATH=%USERPROFILE%\\dart-sdk\\bin;%PATH%" >> $GITHUB_ENV
 
     - name: Flutter pub get
       run: flutter pub get
+
 
     - name: Run tests
       run: flutter test
