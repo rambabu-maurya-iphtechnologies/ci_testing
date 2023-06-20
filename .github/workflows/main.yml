@@ -22,13 +22,17 @@ jobs:
     - name: Display Flutter version
       run: flutter --version
 
-    - name: Set up Dart SDK
+    - name: Uninstall previous Dart SDK
+      run: sudo rm -rf /usr/lib/dart
+
+    - name: Install Dart SDK 3.0.5
       run: |
-        echo "Dart SDK version required: >=3.0.5 <4.0.0"
-        curl -sSLO https://dart.dev/tools/sdk/archive/3.0.5/dart-sdk-linux-x64.zip
-        unzip -q dart-sdk-linux-x64.zip
-        export PATH="$PATH:$PWD/dart-sdk/bin"
-        dart --version
+        wget https://storage.googleapis.com/dart-archive/channels/stable/release/3.0.5/sdk/dartsdk-linux-x64-release.zip
+        unzip -q dartsdk-linux-x64-release.zip -d /usr/lib
+        rm dartsdk-linux-x64-release.zip
+
+    - name: Set up environment variables
+      run: echo "PATH=/usr/lib/dart/bin:\$PATH" >> $GITHUB_ENV
 
     - name: Flutter pub get
       run: flutter pub get
