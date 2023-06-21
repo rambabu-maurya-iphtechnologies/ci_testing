@@ -49,7 +49,6 @@ jobs:
 
     - name: Build APK
       run: flutter build apk --debug
-
     - name: Display build folder location
       run: |
         echo "Build folder location: $(pwd)/build/"
