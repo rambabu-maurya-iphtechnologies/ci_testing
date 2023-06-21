@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build_and_merge:
     runs-on: windows-latest
 
     steps:
@@ -47,8 +47,15 @@ jobs:
     - name: Run tests
       run: flutter test
 
+    - name: Merge test branch into main
+      run: |
+        git checkout main
+        git merge testbranch1 --no-ff --no-edit
+        git push origin main
+
     - name: Build APK
       run: flutter build apk --debug
+
     - name: Display build folder location
       run: |
         echo "Build folder location: $(pwd)/build/"
